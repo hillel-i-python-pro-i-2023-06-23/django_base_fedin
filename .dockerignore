@@ -6,3 +6,5 @@
 !core/
 !manage.py
 !requirements.txt
+!db
+!static

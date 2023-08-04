@@ -1,12 +1,12 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="run django" type="Python.DjangoServer" factoryName="Django server">
-    <module name="homework__dmytro_fedin__10_django" />
+    <module name="django_base_fedin" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
-    <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+    <option name="SDK_HOME" value="$PROJECT_DIR$/../homework__dmytro_fedin__10_django/venv/bin/python" />
     <option name="SDK_NAME" value="Python 3.11 (homework__dmytro_fedin__10_django)" />
     <option name="WORKING_DIRECTORY" value="" />
     <option name="IS_MODULE_SDK" value="false" />

@@ -4,7 +4,11 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     pass
-    # add additional fields in here
 
-    def __str__(self):
-        return self.username
+    # def __str__(self):
+    #     return self.username
+
+
+class MyModel(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/')
