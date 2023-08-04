@@ -47,7 +47,7 @@ DJANGO_APPS = [
 ]
 
 # Register local apps
-LOCAL_APPS = ["apps.my"]
+LOCAL_APPS = ["apps.my", "apps.basic"]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
