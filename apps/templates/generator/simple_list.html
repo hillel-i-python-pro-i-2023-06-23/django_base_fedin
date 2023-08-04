@@ -1,0 +1,16 @@
+{% extends "_helpers/index.html" %}
+
+<!-- Block with users list. -->
+{% block content %}
+
+    <ol>
+        {% for user in users %}
+            <li>
+                <p>Login: {{ user.login }}</p>
+                <p>Email: {{ user.email }}</p>
+                <p>Password: {{ user.password }}</p>
+            </li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}
