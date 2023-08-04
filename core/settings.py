@@ -47,7 +47,7 @@ DJANGO_APPS = [
 ]
 
 # Register local apps
-LOCAL_APPS = ["apps.my", "apps.basic"]
+LOCAL_APPS = ["apps.basic"]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
@@ -134,3 +134,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "basic.CustomUser"  # added for custom user model
