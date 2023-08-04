@@ -1,9 +1,7 @@
 from django.urls import path
 
-# Import view from contacts app
-from . import views
+from .views import SignUpView
 
-app_name = "contacts"
-
-# Path to views
-urlpatterns = []
+urlpatterns = [
+    path("signup/", SignUpView.as_view(), name="signup"),
+]
