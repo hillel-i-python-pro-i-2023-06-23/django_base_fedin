@@ -1,10 +1,18 @@
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.shortcuts import render
 
-from .forms import CustomUserCreationForm
+from .models import DataStored
 
 
-class SignUpView(CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy("login")
-    template_name = "registration/signup.html"
+def compare_string(request):
+    input_string = request.POST.get("input_string")
+    stored_data = DataStored.objects.first()
+
+    if request.method == "POST":
+        if input_string == stored_data:
+            message = "String match!"
+        else:
+            message = "String doesn't match!"
+
+        return render(request, "game/result.html", {"message": message})
+
+    return render(request, "game/forms.html")
