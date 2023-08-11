@@ -11,5 +11,6 @@ class SignUpView(CreateView):
     template_name = "registration/signup.html"
 
 
+# View to About Us page
 def about_view(request):
     return render(request, 'about.html')
