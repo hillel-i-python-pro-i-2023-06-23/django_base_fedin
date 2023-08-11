@@ -1,11 +1,11 @@
 # Django application
 
 ---
-![Main workflow](https://github.com/hillel-i-python-pro-i-2023-06-23/homework__dmytro_fedin__10_django/actions/workflows/main-workflow.yml/badge.svg)
+![Main workflow](https://github.com/hillel-i-python-pro-i-2023-06-23/django_base_fedin/actions/workflows/main-workflow.yml/badge.svg)
 
-## 🏠 Homework 10
+## 🏠 Homework 14
 
-Simple Django project.
+Basic Django project.
 
 
 
