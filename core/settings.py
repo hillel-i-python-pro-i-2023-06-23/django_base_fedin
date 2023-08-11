@@ -45,9 +45,9 @@ DJANGO_APPS = [
 ]
 
 # Register local apps
-# LOCAL_APPS = ["apps.basic"]
+LOCAL_APPS = ["apps.basic"]
 
-# INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
