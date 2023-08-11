@@ -20,9 +20,7 @@ APPS_DIR = BASE_DIR.joinpath("apps")
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-&@*kgout_%h4har(do4m6lfa1bd=wxq24$in)%7s)x0i)h-gej"
-)
+SECRET_KEY = "django-insecure-&@*kgout_%h4har(do4m6lfa1bd=wxq24$in)%7s)x0i)h-gej"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -129,6 +127,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Set path to user model in Django
 AUTH_USER_MODEL = "basic.CustomUser"
 
 LOGIN_REDIRECT_URL = "home"

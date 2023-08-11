@@ -13,4 +13,4 @@ class SignUpView(CreateView):
 
 # View to About Us page
 def about_view(request):
-    return render(request, 'about.html')
+    return render(request, "about.html")
