@@ -1,49 +1,47 @@
+import logging
+
 from django.contrib.auth.management.commands import createsuperuser
-from django.core.management import CommandError
+
+from apps.basic.models import CustomUser
+from apps.basic.services import generate_users
 
 
 class Command(createsuperuser.Command):
     help = "Create a superuser"
 
     def add_arguments(self, parser) -> None:
-        super(Command, self).add_arguments(parser)
         parser.add_argument(
-            "--password",
-            dest="password",
-            default=None,
-            help="Specifies the password for the superuser.",
-        )
-        parser.add_argument(
-            "--preserve",
-            dest="preserve",
-            default=False,
-            action="store_true",
-            help="Exit normally if the user already exists.",
+            "--amount",
+            type=int,
+            default=1,
+            help="Number of superusers to generate",
         )
 
     def handle(self, *args, **options):
-        password = options.get("password")
-        username = options.get("username")
-        database = options.get("database")
+        amount: int = options["amount"]
 
-        if password and not username:
-            raise CommandError("--username is required if specifying --password")
+        password = 'admin123'
+        username = 'admin'
+        is_staff = True
+        is_superuser = True
+        email = ''
 
-        if username and options.get("preserve"):
-            exists = (
-                self.UserModel._default_manager.db_manager(database)
-                .filter(username=username)
-                .exists()
-            )
-            if exists:
-                self.stdout.write("User exists, exiting normally due to --preserve")
-                return
+        # Log handling to terminal
+        logger = logging.getLogger("django")
 
-        super(Command, self).handle(*args, **options)
+        # Get queryset template
+        logger.info(f"Current amount of superusers before: {amount}")
 
-        if password:
-            user = self.UserModel._default_manager.db_manager(database).get(
-                username=username
-            )
-            user.set_password(password)
+        for user in generate_users(amount=amount):
+            user.is_auto_generated = True
+            user.password = password
+            user.username = username
+            user.is_staff = is_staff
+            user.is_superuser = is_superuser
+            user.email = email
+
             user.save()
+
+        logger.info(f"Current amount of superusers after: {amount}")
+
+

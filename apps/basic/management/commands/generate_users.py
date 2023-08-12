@@ -34,4 +34,4 @@ class Command(BaseCommand):
             user.is_auto_generated = True
             user.save()
 
-        logger.info(f"Current amount of animals after: {queryset.count()}")
+        logger.info(f"Current amount of users after: {queryset.count()}")
