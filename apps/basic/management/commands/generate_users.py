@@ -15,8 +15,8 @@ class Command(BaseCommand):
         parser.add_argument(
             "--amount",
             type=int,
-            help="Number of users to generate",
             default=20,
+            help="Number of users to generate",
         )
 
     def handle(self, *args, **options) -> None:
