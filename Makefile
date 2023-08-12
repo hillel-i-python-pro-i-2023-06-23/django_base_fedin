@@ -63,17 +63,13 @@ pre-commit-run:
 pre-commit-run-all:
 	@pre-commit run --all-files
 
-.PHONY: init_dev_i_createsuperuser	# :TODO: add creation capability
-# Run tools for all files.
-init_dev_i_createsuperuser:
-	@DJANGO_SUPERUSER_PASSWORD=admin123 python manage.py createsuperuser --user admin --email admin@gmail.com --no-input
 
-#.PHONY: migrations	# :TODO: add migrate capability
-## Make migrations
-#migrations:
-#	@python manage.py makemigrations
-#
-#.PHONY: migrate
-## Migrate
-#migrate:
-#	@python manage.py migrate
+.PHONY: migrations	# :TODO: add migrate capability
+# Make migrations
+migrations:
+	@python manage.py makemigrations
+
+.PHONY: migrate
+# Migrate
+migrate:
+	@python manage.py migrate

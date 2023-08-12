@@ -6,7 +6,7 @@ from faker import Faker
 def get_user():
     current_faker = Faker()
 
-    current_login = current_faker.login()
+    current_username = current_faker.first_name()
     current_email = current_faker.email()
 
-    return current_login, current_email
+    return current_username, current_email

@@ -15,7 +15,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--amount",
             type=int,
-            help="Number of contacts to generate",
+            help="Number of users to generate",
             default=20,
         )
 
@@ -28,10 +28,10 @@ class Command(BaseCommand):
         # Get queryset template
         queryset = CustomUser.objects.all()
 
-        logger.info(f"Current amount of animals before: {queryset.count()}")
+        logger.info(f"Current amount of users before: {queryset.count()}")
 
-        for contact in generate_users(amount=amount):
-            contact.is_auto_generated = True
-            contact.save()
+        for user in generate_users(amount=amount):
+            user.is_auto_generated = True
+            user.save()
 
         logger.info(f"Current amount of animals after: {queryset.count()}")
