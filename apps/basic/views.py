@@ -5,6 +5,8 @@ from datetime import datetime
 
 from .forms import CustomUserCreationForm
 
+from apps.basic.models import CustomUser
+
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
@@ -20,6 +22,7 @@ def about_view(request):
         context={
             "greeting_text": "Welcome to our website!",
             "now": datetime.now(),
+            "user_amount": CustomUser.objects.all().count()
         }
     )
 
