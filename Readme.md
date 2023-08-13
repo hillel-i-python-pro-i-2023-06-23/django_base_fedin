@@ -3,9 +3,9 @@
 ---
 ![Main workflow](https://github.com/hillel-i-python-pro-i-2023-06-23/django_base_fedin/actions/workflows/main-workflow.yml/badge.svg)
 
-## 🏠 Homework 14
+## 🏠 Homework 16
 
-Basic Django project.
+Django admin.
 
 
 
