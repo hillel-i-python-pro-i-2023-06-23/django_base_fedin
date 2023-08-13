@@ -3,7 +3,16 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    pass
+
+    # Add custom field
+    state = models.CharField(
+        max_length=100,
+        choices=(
+            ("good", "Good"),
+            ("bad", "Bad")
+        ),
+        default="good"
+    )
 
     def __str__(self):
         return self.username

@@ -16,12 +16,15 @@ class CustomUserAdmin(UserAdmin):
         "email",
         "password",
         "is_superuser",
-        "is_staff"
+        "is_staff",
+        "state"
     ]
 
-    # list_filter = [
-    #     "data_joined",
-    # ]
+    list_filter = [
+        "state",
+        "is_superuser",
+        "is_staff",
+    ]
 
 
 # Register admin model

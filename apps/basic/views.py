@@ -26,7 +26,3 @@ def about_view(request):
         }
     )
 
-
-# View to About Us page
-# def home_view(request):
-#     return render(request, "home.html")
