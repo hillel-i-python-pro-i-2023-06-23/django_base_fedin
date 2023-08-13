@@ -6,6 +6,26 @@
 
     <h2>About Us</h2>
 
-    <p>{{ greeting_text }} Now is {{ now }}</p>
+    {% if user.is_authenticated %}
+
+        {% if user.is_superuser %}
+
+            <h3>Hello {{ user }} </h3>
+
+            <p>We have {{ 1 }} user(s)</p>
+
+        {% else %}
+
+            <h3>Hello {{ user }} </h3>
+
+            <p>{{ greeting_text }} Now is {{ now }}</p>
+
+        {% endif %}
+
+    {% else %}
+
+    <p>{{ greeting_text }}</p>
+
+    {% endif %}
 
 {% endblock %}
