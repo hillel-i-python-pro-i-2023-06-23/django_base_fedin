@@ -12,6 +12,7 @@ def generate_user() -> CustomUser:
     return CustomUser(
         username=concurrent_credentials[0],
         email=concurrent_credentials[1],
+        password=concurrent_credentials[2]
     )
 
 

@@ -24,7 +24,7 @@ class Command(createsuperuser.Command):
         username = 'admin'
         is_staff = True
         is_superuser = True
-        email = ''
+        email = 'admin@gmail.com'
 
         # Log handling to terminal
         logger = logging.getLogger("django")

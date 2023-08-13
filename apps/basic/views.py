@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.shortcuts import render
+from datetime import datetime
 
 from .forms import CustomUserCreationForm
 
@@ -13,9 +14,16 @@ class SignUpView(CreateView):
 
 # View to About Us page
 def about_view(request):
-    return render(request, "about.html")
+    return render(
+        request=request,
+        template_name="about.html",
+        context={
+            "greeting_text": "Welcome to our website!",
+            "now": datetime.now(),
+        }
+    )
 
 
-# # View to About Us page
+# View to About Us page
 # def home_view(request):
 #     return render(request, "home.html")

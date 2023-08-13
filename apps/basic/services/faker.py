@@ -8,5 +8,6 @@ def get_user():
 
     current_username = current_faker.first_name()
     current_email = current_faker.email()
+    current_password = current_faker.password()
 
-    return current_username, current_email
+    return current_username, current_email, current_password
