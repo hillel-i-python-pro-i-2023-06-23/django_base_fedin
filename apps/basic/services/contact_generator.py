@@ -9,11 +9,7 @@ from apps.basic.services.faker import get_user
 def generate_user() -> CustomUser:
     concurrent_credentials = get_user()
 
-    return CustomUser(
-        username=concurrent_credentials[0],
-        email=concurrent_credentials[1],
-        password=concurrent_credentials[2]
-    )
+    return CustomUser(username=concurrent_credentials[0], email=concurrent_credentials[1], password=concurrent_credentials[2])
 
 
 def generate_users(

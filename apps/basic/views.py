@@ -16,13 +16,4 @@ class SignUpView(CreateView):
 
 # View to About Us page
 def about_view(request):
-    return render(
-        request=request,
-        template_name="about.html",
-        context={
-            "greeting_text": "Welcome to our website!",
-            "now": datetime.now(),
-            "user_amount": CustomUser.objects.all().count()
-        }
-    )
-
+    return render(request=request, template_name="about.html", context={"greeting_text": "Welcome to our website!", "now": datetime.now(), "user_amount": CustomUser.objects.all().count()})

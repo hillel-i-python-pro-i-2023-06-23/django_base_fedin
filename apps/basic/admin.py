@@ -11,14 +11,7 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     model = models.CustomUser
 
-    list_display = [
-        "username",
-        "email",
-        "password",
-        "is_superuser",
-        "is_staff",
-        "state"
-    ]
+    list_display = ["username", "email", "password", "is_superuser", "is_staff", "state"]
 
     list_filter = [
         "state",

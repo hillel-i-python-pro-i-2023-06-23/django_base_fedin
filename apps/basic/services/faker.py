@@ -14,9 +14,7 @@ def get_user():
     # Set item templates
     login_template = current_faker.lexify(text="?" * 8, letters=characters)
     text_template = current_faker.lexify(text="?" * 3, letters=characters)
-    password_template = current_faker.lexify(
-        text="?" * 12, letters=password_characters
-    )
+    password_template = current_faker.lexify(text="?" * 12, letters=password_characters)
 
     # Get items
     current_login = login_template

@@ -31,9 +31,7 @@ class Command(BaseCommand):
         queryset_for_delete = queryset
         if is_only_auto_generated:
             logger.info("Delete only auto generated users")
-            queryset_for_delete = queryset_for_delete.filter(
-                is_auto_generated=True
-            )
+            queryset_for_delete = queryset_for_delete.filter(is_auto_generated=True)
 
         total_deleted, details = queryset_for_delete.delete()
         logger.info(f"Total deleted: {total_deleted}, details: {details}")

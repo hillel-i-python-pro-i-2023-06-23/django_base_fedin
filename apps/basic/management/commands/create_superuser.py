@@ -2,7 +2,6 @@ import logging
 
 from django.contrib.auth.management.commands import createsuperuser
 
-from apps.basic.models import CustomUser
 from apps.basic.services import generate_users
 
 
@@ -20,11 +19,11 @@ class Command(createsuperuser.Command):
     def handle(self, *args, **options):
         amount: int = options["amount"]
 
-        password = 'admin123'
-        username = 'admin'
+        password = "admin123"
+        username = "admin"
         is_staff = True
         is_superuser = True
-        email = 'admin@gmail.com'
+        email = "admin@gmail.com"
 
         # Log handling to terminal
         logger = logging.getLogger("django")
@@ -43,5 +42,3 @@ class Command(createsuperuser.Command):
             user.save()
 
         logger.info(f"Current amount of superusers after: {amount}")
-
-
