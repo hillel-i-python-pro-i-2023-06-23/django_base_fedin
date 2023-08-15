@@ -41,7 +41,7 @@ class Command(createsuperuser.Command):
 
         user = generate_user()
         user.is_auto_generated = True
-        user.password = password
+        user.set_password(password)
         user.username = username
         user.is_staff = is_staff
         user.is_superuser = is_superuser
