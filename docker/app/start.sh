@@ -13,7 +13,13 @@ set -o xtrace
 # [bash_init]-[END]
 
 # Apply database migrations.
-#make migrate # :TODO: add migrate capability
+make migrate
+
+python manage.py delete_users
+
+python manage.py generate_users
+
+python manage.py create_superuser --password admin123 --username admin --email admin@gmail.com
 
 # Run application.
-python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000 # :TODO: change entry in Dockerfile

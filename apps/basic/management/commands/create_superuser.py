@@ -49,4 +49,4 @@ class Command(createsuperuser.Command):
 
         user.save()
 
-        logger.info(f"Password of superuser: {password}")
+        logger.info(f"Superuser {username} created with password {password} and email {email}")
