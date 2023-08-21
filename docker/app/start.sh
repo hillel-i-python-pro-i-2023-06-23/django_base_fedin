@@ -19,7 +19,7 @@ python manage.py delete_users
 
 python manage.py generate_users
 
-python manage.py create_superuser --password admin123 --username admin --email admin@gmail.com
+python manage.py create_superuser --password admin123 --username admin --email admin@gmail.com --no-input
 
 # Run application.
-python manage.py runserver 0.0.0.0:8000 # :TODO: change entry in Dockerfile
+python manage.py runserver 0.0.0.0:8000

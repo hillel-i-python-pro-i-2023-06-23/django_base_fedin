@@ -64,7 +64,7 @@ pre-commit-run-all:
 	@pre-commit run --all-files
 
 
-.PHONY: migrations	# :TODO: add migrate capability
+.PHONY: migrations
 # Make migrations
 migrations:
 	@python manage.py makemigrations
