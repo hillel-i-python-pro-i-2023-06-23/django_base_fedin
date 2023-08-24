@@ -10,8 +10,8 @@ def generate_user() -> CustomUser:
 
     return CustomUser(
         username=fake_user.get_login(),
-        email=fake_user.get_password(),
-        password=fake_user.get_email(),
+        email=fake_user.get_email(),
+        password=fake_user.get_password(),
     )
 
 
