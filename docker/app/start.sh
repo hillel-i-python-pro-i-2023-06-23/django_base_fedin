@@ -15,11 +15,10 @@ set -o xtrace
 # Apply database migrations.
 make migrate
 
-python manage.py delete_users
-
 python manage.py generate_users
 
-python manage.py create_superuser --password admin123 --username admin --email admin@gmail.com --no-input
+#python manage.py createsuperuser --noinput --password admin123 --username admin --email admin@gmail.com
+python manage.py create_superuser
 
 # Run application.
 python manage.py runserver 0.0.0.0:8000

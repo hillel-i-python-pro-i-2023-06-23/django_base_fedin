@@ -36,4 +36,4 @@ class Command(BaseCommand):
         total_deleted, details = queryset_for_delete.delete()
         logger.info(f"Total deleted: {total_deleted}, details: {details}")
 
-        logger.info(f"Current amount of users after: {queryset.count()}")
+        logger.info(f"Current amount of users after deletion: {queryset.count()}")

@@ -28,11 +28,11 @@ class Command(BaseCommand):
         # Get queryset template
         queryset = CustomUser.objects.all()
 
-        logger.info(f"Current amount of users before: {queryset.count()}")
+        logger.info(f"Amount of users before: {queryset.count()}")
 
         for user in generate_users(amount=amount):
             user.is_auto_generated = True
             user.set_password(user.password)
             user.save()
 
-        logger.info(f"Current amount of users after: {queryset.count()}")
+        logger.info(f"Amount of users after: {queryset.count()}")
