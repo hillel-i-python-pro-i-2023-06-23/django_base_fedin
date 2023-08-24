@@ -1,28 +1,34 @@
-# Get faker
-from faker import Faker
-
 import string
 
+from faker import Faker
 
-def get_user():
-    current_faker = Faker()
 
-    # Set character sets
-    characters = string.ascii_letters + string.digits + "_"
-    password_characters = string.ascii_letters + string.digits + "!@#$^()"
+class FakeUser:
+    def __init__(self):
+        self.faker = Faker()
+        self.characters = string.ascii_letters + string.digits + "_"
+        self.password_characters = (
+            string.ascii_letters + string.digits + "!@#$^()"
+        )
 
-    # Set item templates
-    login_template = current_faker.lexify(text="?" * 8, letters=characters)
-    text_template = current_faker.lexify(text="?" * 3, letters=characters)
-    password_template = current_faker.lexify(text="?" * 12, letters=password_characters)
+    def get_login(self):
+        return self.faker.lexify(text="?" * 8, letters=self.characters)
 
-    # Get items
-    current_login = login_template
-    current_text = text_template
-    current_password = password_template
+    def get_password(self):
+        return self.faker.lexify(text="?" * 3, letters=self.characters)
 
-    # Get domain name
-    domain_name = current_faker.unique.domain_name()
-    current_email = f"{current_login}{current_text}@{domain_name}"
+    def get_text(self):
+        return self.faker.lexify(text="?" * 3, letters=self.characters)
 
-    return current_login, current_email, current_password
+    def get_domain(self):
+        return self.faker.unique.domain_name()
+
+    def get_email(self):
+        login = self.get_login()
+        text = self.get_text()
+        domain = self.get_domain()
+
+        return f"{login}{text}@{domain}"
+
+
+fake_user = FakeUser()
