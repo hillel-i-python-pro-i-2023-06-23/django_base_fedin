@@ -3,7 +3,7 @@ from django.db import models
 
 
 # Create my models here.
-class Contact(models.Model):
+class Contact(models.Model):    # :TODO: add optional birth date as a field
     name = models.CharField(max_length=20, unique=True)
     phone_regex = RegexValidator(
         regex=r"^\+?1?[-().\dx]{9,20}$",
