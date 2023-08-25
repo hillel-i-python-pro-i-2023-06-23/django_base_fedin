@@ -30,6 +30,7 @@ class Contact(models.Model):    # :TODO: add optional birth date as a field
         null=False,
     )
 
+
     def __str__(self):
         return f"{self.name}"
 

@@ -21,6 +21,8 @@ python manage.py generate_users
 
 python manage.py create_superuser
 
+python manage.py delete_contacts
+
 python manage.py generate_contacts
 
 # Run application.
