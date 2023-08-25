@@ -31,7 +31,10 @@ class Contact(models.Model):    # :TODO: add optional birth date as a field
         null=False,
     )
 
-    jobs = models.ManyToManyField(Job)
+    jobs = models.ManyToManyField(
+        "Job",
+        related_name="contacts",
+    )
 
     def __str__(self):
         return f"{self.name}"

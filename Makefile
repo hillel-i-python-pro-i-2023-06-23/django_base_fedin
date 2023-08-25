@@ -73,3 +73,14 @@ migrations:
 # Migrate
 migrate:
 	@python manage.py migrate
+
+.PHONY: init_contacts_data
+# Init contacts data
+init_contacts_data:
+	@python manage.py init_contacts_data
+
+.PHONY: init-apps-data
+# Init apps data
+init-apps-data:
+	@make init_contacts_data
+	echo "Done"

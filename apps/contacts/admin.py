@@ -17,7 +17,4 @@ class CustomContactAdmin(admin.ModelAdmin):
 class CustomJobAdmin(admin.ModelAdmin):
     list_display = ["name"]
 
-    list_filter = [
-        "name",
-    ]
 
