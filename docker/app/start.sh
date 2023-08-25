@@ -21,5 +21,7 @@ python manage.py generate_users
 
 python manage.py create_superuser
 
+python manage.py generate_contacts
+
 # Run application.
 python manage.py runserver 0.0.0.0:8000
