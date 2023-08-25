@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-from apps.contacts.models import Contact
+from apps.contacts import models
 
 
+@admin.register(models.Contact)
 class CustomContactAdmin(admin.ModelAdmin):
     list_display = ["name", "phone_number", "created_at"]
 
@@ -12,5 +13,11 @@ class CustomContactAdmin(admin.ModelAdmin):
     ]
 
 
-# Register my models here.
-admin.site.register(Contact, CustomContactAdmin)
+@admin.register(models.Job)
+class CustomJobAdmin(admin.ModelAdmin):
+    list_display = ["name"]
+
+    list_filter = [
+        "name",
+    ]
+

@@ -1,5 +1,6 @@
 from django.core.validators import RegexValidator
 from django.db import models
+from apps.contacts.models import Job
 
 
 # Create my models here.
@@ -30,6 +31,7 @@ class Contact(models.Model):    # :TODO: add optional birth date as a field
         null=False,
     )
 
+    jobs = models.ManyToManyField(Job)
 
     def __str__(self):
         return f"{self.name}"
