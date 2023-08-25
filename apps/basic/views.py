@@ -6,6 +6,7 @@ from datetime import datetime
 from .forms import CustomUserCreationForm
 
 from apps.basic.models import CustomUser
+from apps.contacts.models import Contact
 
 
 class SignUpView(CreateView):
@@ -16,4 +17,13 @@ class SignUpView(CreateView):
 
 # View to About Us page
 def about_view(request):
-    return render(request=request, template_name="about.html", context={"greeting_text": "Welcome to our website!", "now": datetime.now(), "user_amount": CustomUser.objects.all().count()})
+    return render(
+        request=request,
+        template_name="about.html",
+        context={
+            "greeting_text": "Welcome to our website!",
+            "now": datetime.now(),
+            "user_amount": CustomUser.objects.all().count(),
+            "contact_amount": Contact.objects.all().count(),
+        }
+    )

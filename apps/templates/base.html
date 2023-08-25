@@ -2,42 +2,29 @@
 <html lang="en-us">
 
 <head>
-
   <meta charset="utf-8">
   <title>
       {% block title %}Django Auth{% endblock %}
   </title>
-
 </head>
 
 <body>
-
-
     <div>
-
     <h1>
       Django base project
     </h1>
-
     <nav>
-
       <ul>
           <li><a href="{% url 'about' %}">About Us</a></li>
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'admin:index' %}">admin</a></li>
       </ul>
-
     </nav>
-
   </div>
-
   <main>
-
     {% block content %}
     {% endblock %}
-
   </main>
-
 </body>
 
 </html>
