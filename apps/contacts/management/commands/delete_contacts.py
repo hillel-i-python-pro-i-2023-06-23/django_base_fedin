@@ -2,11 +2,11 @@ import logging
 
 from django.core.management.base import BaseCommand
 
-from apps.basic.models import CustomUser
+from apps.contacts.models import Contact
 
 
 class Command(BaseCommand):
-    help = "Delete users"
+    help = "Delete contacts"
 
     # Get parser for command args
     def add_arguments(self, parser) -> None:
@@ -24,16 +24,16 @@ class Command(BaseCommand):
         logger = logging.getLogger("django")
 
         # Get queryset template
-        queryset = CustomUser.objects.all()
+        queryset = Contact.objects.all()
 
-        logger.info(f"Current amount of users before: {queryset.count()}")
+        logger.info(f"Current amount of contacts before: {queryset.count()}")
 
         queryset_for_delete = queryset
         if is_only_auto_generated:
-            logger.info("Delete only auto generated users")
+            logger.info("Delete only auto generated contacts")
             queryset_for_delete = queryset_for_delete.filter(is_auto_generated=True)
 
         total_deleted, details = queryset_for_delete.delete()
         logger.info(f"Total deleted: {total_deleted}, details: {details}")
 
-        logger.info(f"Current amount of users after deletion: {queryset.count()}")
+        logger.info(f"Current amount of contacts after deletion: {queryset.count()}")
