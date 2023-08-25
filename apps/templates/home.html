@@ -2,14 +2,33 @@
 
 {% block title %}Home{% endblock %}
 
+{% block menu %}
+    {% if user.is_superuser %}
+        <nav>
+            <ul>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'admin:index' %}">admin</a></li>
+            </ul>
+        </nav>
+    {% else %}
+        <nav>
+            <ul>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     <h2>Home</h2>
     {% if user.is_authenticated %}
-      Hi {{ user.username }}!
-      <p><a href="{% url 'logout' %}">Log Out</a></p>
+        Hi {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
     {% else %}
-      <p>You are not logged in</p>
-      <a href="{% url 'login' %}">Log In</a>
-      <a href="{% url 'signup' %}">Sign Up</a>
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">Log In</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
     {% endif %}
 {% endblock %}
