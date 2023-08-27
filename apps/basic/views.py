@@ -6,7 +6,7 @@ from datetime import datetime
 from .forms import CustomUserCreationForm
 
 from apps.basic.models import CustomUser
-from apps.contacts.models import Contact
+from apps.contacts.models.contact import Contact
 
 
 class SignUpView(CreateView):

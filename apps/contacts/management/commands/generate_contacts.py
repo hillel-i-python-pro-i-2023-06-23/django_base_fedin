@@ -2,7 +2,7 @@ import logging
 
 from django.core.management.base import BaseCommand
 
-from apps.contacts.models import Contact
+from apps.contacts.models.models import Contact
 from apps.contacts.services import generate_contacts
 
 

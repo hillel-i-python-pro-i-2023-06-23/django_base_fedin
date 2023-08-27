@@ -2,7 +2,7 @@
 from collections.abc import Iterator
 
 # Get app model
-from apps.contacts.models import Contact
+from apps.contacts.models.models import Contact
 from apps.contacts.services.faker import fake_contact
 
 
