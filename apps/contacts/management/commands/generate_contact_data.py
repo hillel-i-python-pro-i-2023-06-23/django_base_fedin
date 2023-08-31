@@ -19,9 +19,6 @@ class Command(BaseCommand):
 
         for contact in Contact.objects.all():
             contact_name = contact.name
-
-            logger.info(f"contact_types: {contact_name}")
-
             value = None
 
             for contact_type in contact_types:
@@ -33,3 +30,6 @@ class Command(BaseCommand):
                     raw_value = contact_name
                     value = raw_value[0].lower() + raw_value[1:]
                 ContactData.objects.create(contact=contact, data_type=contact_type, value=value)
+
+        queryset = Contact.objects.all()
+        logger.info(f"Amount of contact types created: {queryset.count()}")
