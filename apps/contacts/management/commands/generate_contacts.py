@@ -7,7 +7,7 @@ from apps.contacts.services import generate_contacts
 
 
 class Command(BaseCommand):
-    help = "Generate users"
+    help = "Generate contacts"
 
     # Get parser for command args
     def add_arguments(self, parser) -> None:
