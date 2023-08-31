@@ -21,13 +21,17 @@ python manage.py generate_users
 
 python manage.py create_superuser
 
-python manage.py delete_contacts
+python manage.py init_contact_data
 
-python manage.py generate_contacts
+#python manage.py generate_contact_data
 
-python manage.py delete_contact_data
-
-python manage.py generate_contact_data
+#python manage.py delete_contacts
+#
+#python manage.py generate_contacts
+#
+#python manage.py delete_contact_data
+#
+#python manage.py generate_contact_data
 
 # Run application.
 python manage.py runserver 0.0.0.0:8000

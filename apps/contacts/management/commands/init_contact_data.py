@@ -16,24 +16,42 @@ class Command(BaseCommand):
     def handle(self, *args, **options) -> None:
         logger = logging.getLogger("django")
         current_amount_of_contacts = Contact.objects.count()
+        primary_keys = []
 
         amount = (self.MINIMAL_AMOUNT_OF_CONTACTS - current_amount_of_contacts)
 
         if amount > 0:
             logger.info(f"Current amount of contacts: {Contact.objects.count()} but {amount} needed")
             for _ in range(amount):
-                contact = Contact.objects.create(name=fake_contact.get_name(),is_auto_generated=1).save()
-                # ContactData.objects.create(contact=contact, data_type=ContactDataType.data_type).save()
+                contact = Contact.objects.create(name=fake_contact.get_name(), is_auto_generated=True)
+                contact.save()
+
+                logger.info(f"Contact created: {Contact}")
+
+                for data_pk in range(3, 6):
+                    data_type_instance = ContactDataType.objects.get(pk=data_pk)
+                    if data_pk == 3:
+                        contact_data = ContactData.objects.create(contact=contact,
+                                                                  data_type=data_type_instance,
+                                                                  value=fake_contact.get_phone()
+                                                                  )
+                        contact_data.save()
+                    elif data_pk == 4:
+                        contact_data = ContactData.objects.create(contact=contact,
+                                                                  data_type=data_type_instance,
+                                                                  value=contact.name
+                                                                  )
+                        contact_data.save()
+                    else:
+                        name = contact.name
+                        contact_data = ContactData.objects.create(contact=contact,
+                                                                  data_type=data_type_instance,
+                                                                  value=fake_contact.get_email(name)
+                                                                  )
+                        contact_data.save()
         else:
             logger.info(f"Current amount of data is enough.")
 
         logger.info(f"{amount} contacts created")
-
-        # if amount:
-        #     logger.info(f"{amount} contact data needed")
-        #     for _ in range(amount):
-        #         ContactData.objects.create().save()
-        # else:
-        #     logger.info(f"Current amount of data is enough.")
 
         logger.info(f"Final amount of contacts with contact data: {Contact.objects.count()}")
