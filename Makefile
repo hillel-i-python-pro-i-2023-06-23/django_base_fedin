@@ -73,3 +73,10 @@ migrations:
 # Migrate
 migrate:
 	@python manage.py migrate
+
+.PHONY: init_user_data
+# Make migrations
+migrations:
+	@python manage.py generate_users && \
+	python manage.py create_superuser && \
+	echo "User data created"
