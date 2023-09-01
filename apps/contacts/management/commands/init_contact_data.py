@@ -26,8 +26,6 @@ class Command(BaseCommand):
                 contact = Contact.objects.create(name=fake_contact.get_name(), is_auto_generated=True)
                 contact.save()
 
-                logger.info(f"Contact created: {Contact}")
-
                 for data_pk in range(3, 6):
                     data_type_instance = ContactDataType.objects.get(pk=data_pk)
                     if data_pk == 3:
