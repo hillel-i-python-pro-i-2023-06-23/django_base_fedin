@@ -3,11 +3,16 @@
 {% block title %}List{% endblock %}
 
 {% block content %}
-    <h1>Contact List</h1>
+    <h3>Contact List</h3>
 
     <ul>
         {% for contact in contacts %}
             <li>{{ contact.name }}</li>
+            <ul>
+                {% for contac_tdata in contact.contactdata_set.all %}
+                    <li>{{ contac_tdata.data_type.name }}: {{ contac_tdata.value }}</li>
+                {% endfor %}
+            </ul>
         {% endfor %}
     </ul>
 {% endblock %}
