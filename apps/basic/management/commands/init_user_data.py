@@ -3,7 +3,6 @@ from typing import Final
 
 from django.core.management.base import BaseCommand
 from django.core.exceptions import FieldError
-from django.contrib.auth.management.commands import createsuperuser
 
 from apps.basic.management.commands import create_superuser
 from apps.basic.services import generate_user
@@ -38,7 +37,7 @@ class Command(BaseCommand):
         else:
             logger.info(f"Current amount of users is enough.")
 
-        is_superuser = CustomUser.objects.filter(first_name="admin").exists()
+        is_superuser = CustomUser.objects.filter(username="admin").exists()
         if is_superuser:
             logger.info(f"Superuser already exists. No superuser created.")
             pass
