@@ -3,25 +3,20 @@ from apps.contacts.models.contact import Contact
 from apps.contacts.models.contact_data import ContactData
 
 
-# def contact_home_view(request):
-#     contacts = Contact.objects.all()
-#
-#     return render(
-#         request=request,
-#         template_name='home.html',
-#         context={'contacts': contacts}
-#     )
-
-
 def contact_list_view(request):
     contacts = Contact.objects.all()
-    contac_tdata = ContactData.objects.all()
+    contact_tdata = ContactData.objects.all()
+
+    info_message = "We got something, but you have no enough permissions to see("
+    login_prompt = "Please, log in first"
 
     return render(
         request=request,
         template_name='contact_list.html',
         context={'contacts': contacts,
-                 'contact_data': contac_tdata,
+                 'contact_data': contact_tdata,
+                 'info_message': info_message,
+                 'login_prompt': login_prompt,
                  }
     )
 

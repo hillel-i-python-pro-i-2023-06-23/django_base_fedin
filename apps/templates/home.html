@@ -8,8 +8,8 @@
             <ul>
                 <li><a href="{% url 'about' %}">About Us</a></li>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'admin:index' %}">admin</a></li>
-{#                <li><a href="{% url 'contact_list' %}">contact list</a></li>#}
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                <li><a href="{% url 'contacts:contact_list' %}">Contact list</a></li>
             </ul>
         </nav>
     {% else %}
@@ -17,6 +17,7 @@
             <ul>
                 <li><a href="{% url 'about' %}">About Us</a></li>
                 <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'contacts:contact_list' %}">Contact list</a></li>
             </ul>
         </nav>
     {% endif %}
