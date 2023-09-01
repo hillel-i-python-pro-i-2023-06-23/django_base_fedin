@@ -29,28 +29,6 @@ class Command(BaseCommand):
                     contact = Contact.objects.create(name=fake_contact.get_name(), is_auto_generated=True)
                     contact.save()
 
-                    # for data_pk in range(1, 4):
-                    #     data_type_instance = ContactDataType.objects.get(pk=data_pk)
-                    #     if data_pk == 1:
-                    #         contact_data = ContactData.objects.create(contact=contact,
-                    #                                                   data_type=data_type_instance,
-                    #                                                   value=fake_contact.get_phone()
-                    #                                                   )
-                    #         contact_data.save()
-                    #     elif data_pk == 2:
-                    #         contact_data = ContactData.objects.create(contact=contact,
-                    #                                                   data_type=data_type_instance,
-                    #                                                   value=contact.name
-                    #                                                   )
-                    #         contact_data.save()
-                    #     else:
-                    #         name = contact.name
-                    #         contact_data = ContactData.objects.create(contact=contact,
-                    #                                                   data_type=data_type_instance,
-                    #                                                   value=fake_contact.get_email(name)
-                    #                                                   )
-                    #         contact_data.save()
-
             except ObjectDoesNotExist:
                 logger.error(f"Queried object doesn't exist in database.")
 
