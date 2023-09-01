@@ -19,5 +19,7 @@ make init_user_data
 
 python manage.py init_contact_data
 
+python manage.py generate_contact_data
+
 # Run application.
 python manage.py runserver 0.0.0.0:8000
