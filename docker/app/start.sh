@@ -15,11 +15,7 @@ set -o xtrace
 # Apply database migrations.
 make migrate
 
-python manage.py delete_users
-
-python manage.py generate_users
-
-python manage.py create_superuser
+make init_user_data
 
 python manage.py init_contact_data
 

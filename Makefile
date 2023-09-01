@@ -75,8 +75,8 @@ migrate:
 	@python manage.py migrate
 
 .PHONY: init_user_data
-# Make migrations
-migrations:
+# Create users and superuser
+init_user_data:
 	@python manage.py generate_users && \
 	python manage.py create_superuser && \
 	echo "User data created"
