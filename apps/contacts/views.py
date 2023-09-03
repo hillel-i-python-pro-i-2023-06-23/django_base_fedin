@@ -5,7 +5,7 @@ from apps.contacts.models.contact_data import ContactData
 
 def contact_list_view(request):
     contacts = Contact.objects.all()
-    contact_tdata = ContactData.objects.all()
+    contact_data = ContactData.objects.all()
 
     info_message = "We got something, but you have no enough permissions to see("
     login_prompt = "Please, log in first"
@@ -14,7 +14,7 @@ def contact_list_view(request):
         request=request,
         template_name='contact_list.html',
         context={'contacts': contacts,
-                 'contact_data': contact_tdata,
+                 'contact_data': contact_data,
                  'info_message': info_message,
                  'login_prompt': login_prompt,
                  }

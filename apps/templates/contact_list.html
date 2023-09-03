@@ -4,6 +4,8 @@
 
 {% block content %}
     <h3>Contact List</h3>
+{#    <a href="{% url 'create_contact' %}">Create New Contact</a>#}
+
     {% if user.is_authenticated %}
         {% if user.is_superuser %}
             <ul>
@@ -11,7 +13,7 @@
                     <li>{{ contact.name }}</li>
                     <ul>
                         {% for contact_tdata in contact.contactdata_set.all %}
-                            <li>{{ contact_tdata.data_type.name }}: {{ contact_tdata.value }}</li>
+                            <li>{{ contact_tdata.data_type.name }}: {{ contact_data.value }}</li>
                         {% endfor %}
                     </ul>
                 {% endfor %}
