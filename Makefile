@@ -78,4 +78,8 @@ migrate:
 # Create users and superuser
 init_user_data:
 	@python manage.py init_user_data
-	echo "User data created"
+
+.PHONY: init_contact_data
+# Create users and superuser
+init_contact_data:
+	@python manage.py init_contact_data
