@@ -4,15 +4,22 @@
 
 {% block menu %}
     {% if user.is_superuser %}
-        <nav>
-            <ul>
-                <li><a href="{% url 'basic:about' %}">About Us</a></li>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                <li><a href="{% url 'contacts:contact_list' %}">Contact list</a></li>
-                <li><a href="{% url 'contacts:create_contact' %}">Create contact</a></li>
-            </ul>
-        </nav>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'basic:about' %}">About Us</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                    <li><a href="{% url 'contacts:contact_list' %}">Contact list</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <form method="get" action="{% url 'contacts:create_contact' %}">
+                {% csrf_token %}
+                <button type="submit">Create contact</button>
+            </form>
+        </div>
     {% else %}
         <nav>
             <ul>
