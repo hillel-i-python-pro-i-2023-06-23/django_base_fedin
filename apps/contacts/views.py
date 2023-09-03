@@ -27,6 +27,7 @@ def create_contact_view(request):
     form = ContactForm(request.POST)
     if form.is_valid():
         form.save()
+
         return redirect("contacts:contact_list")
 
     form = ContactForm()
