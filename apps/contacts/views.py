@@ -23,12 +23,13 @@ def contact_list_view(request):
 
 
 def create_contact_view(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            return redirect('contacts:contact_list')
-    else:
-        form = ContactForm()
+
+    form = ContactForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect("contacts:contact_list")
+
+    form = ContactForm()
 
     return render(request, 'create_contact.html', {'form': form})
 
