@@ -5,4 +5,5 @@ app_name = "contacts"
 
 urlpatterns = [
     path('list/', views.contact_list_view, name='contact_list'),
+    path('create_contact/', views.create_contact_view, name='create_contact'),
 ]
