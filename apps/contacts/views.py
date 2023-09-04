@@ -1,7 +1,6 @@
 from django.forms import formset_factory
 from django.shortcuts import render, redirect
-from apps.contacts.models.contact import Contact
-from apps.contacts.models.contact_data import ContactData
+from apps.contacts.models import Contact, ContactData
 from apps.contacts.forms import ContactForm, ContactDataForm
 
 
