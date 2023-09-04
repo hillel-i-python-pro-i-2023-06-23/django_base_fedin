@@ -3,11 +3,10 @@ from typing import Final
 
 from django.core.management.base import BaseCommand
 from django.core import management
-from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 
-from apps.contacts.models.contact import Contact
-from apps.contacts.services.faker import fake_contact
+from apps.contacts.models import Contact
+from apps.contacts.services import fake_contact
 
 
 class Command(BaseCommand):
@@ -20,19 +19,21 @@ class Command(BaseCommand):
 
         amount_needed = (self.MINIMAL_AMOUNT_OF_CONTACTS - current_amount_of_contacts)
 
-        logger.info(f"Current amount of contacts: {current_amount_of_contacts} and {amount_needed} needed")
-
         if amount_needed > 0:
+
+            logger.info(f"Current amount of contacts: {current_amount_of_contacts} and {amount_needed} needed")
+
             for _ in range(amount_needed):
                 try:
                     contact = Contact.objects.create(name=fake_contact.get_name(), is_auto_generated=True)
                     contact.save()
                 except IntegrityError:
                     logger.info(f"A one newly created contact is not unique and has been skipped")
+
+            logger.info(f"Newly created contact amount: {amount_needed}")
+
         else:
             logger.info(f"Current amount of data is enough.")
-
-        logger.info(f"Newly created contact amount: {amount_needed}")
 
         newly_created_contact_data = 0
         for contact in Contact.objects.all():

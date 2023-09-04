@@ -1,6 +1,6 @@
 from django.db import models
-from apps.contacts.models.contact import Contact
-from apps.contacts.models.contact_data_type import ContactDataType
+from .contact import Contact
+from .contact_data_type import ContactDataType
 
 
 class ContactData(models.Model):

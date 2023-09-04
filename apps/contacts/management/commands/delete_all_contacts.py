@@ -2,7 +2,7 @@ import logging
 
 from django.core.management.base import BaseCommand
 
-from apps.contacts.models.contact import Contact
+from apps.contacts.models import Contact
 
 
 class Command(BaseCommand):

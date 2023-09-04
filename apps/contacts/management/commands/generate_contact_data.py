@@ -1,10 +1,8 @@
 import logging
 
 from django.core.management.base import BaseCommand
-from apps.contacts.models.contact import Contact
-from apps.contacts.models.contact_data import ContactData
-from apps.contacts.models.contact_data_type import ContactDataType
-from apps.contacts.services.faker import fake_contact
+from apps.contacts.models import Contact, ContactData, ContactDataType
+from apps.contacts.services import fake_contact
 
 
 class Command(BaseCommand):

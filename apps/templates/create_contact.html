@@ -4,9 +4,17 @@
 
 {% block content %}
     <h2>Create Contact</h2>
-    <form method="post">
+<form method="post">
+    {% csrf_token %}
+    {{ contact_form.as_p}}
+
+    <h3>Data Types</h3>
+    {% for form in contact_data_formset %}
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create</button>
-    </form>
+    {% endfor %}
+
+    <button type="submit">Create</button>
+</form>
+
 {% endblock %}
