@@ -4,22 +4,18 @@
 
 {% block content %}
     <h2>Create Contact</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ contact_form.as_p}}
-    <button type="submit" name="save_contact" value="save_contact">Create</button>
-    <button type="submit" name="cancel" value="cancel">Close</button>
+    <form method="post">
+        {% csrf_token %}
+        {{ contact_form.as_p}}
+        <button type="submit" name="save_contact" value="save_contact">Create</button>
+        <button type="submit" name="cancel" value="cancel">Close</button>
+    </form>
 
     <h3>Data Types</h3>
-{#    {% for form in contact_data_formset %}#}
-{#        {% csrf_token %}#}
-{#        {{ form.as_p }}#}
-{#        <button type="submit" name="submit_data" value="submit_data">Create</button>#}
-{#    {% endfor %}#}
-    {% csrf_token %}
-    {{ contact_data_form_set.as_p }}
-<button type="submit" name="submit_data" value="submit_data">Create</button>
-
-</form>
-
+    <form method="post">
+        {% csrf_token %}
+        {{ contact_data_form.as_p }}
+        <button type="submit" name="submit_data" value="submit_data">Create</button>
+        <button type="submit" name="cancel_data" value="cancel_data">Close</button>
+    </form>
 {% endblock %}

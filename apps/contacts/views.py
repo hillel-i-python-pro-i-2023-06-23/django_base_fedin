@@ -26,47 +26,51 @@ def create_contact_view(request):
 
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
-        contact_data_form_set = ContactDataForm(request.POST)
-        # contact_data_form_set = formset_factory(ContactDataForm, extra=3)
-        # contact_data_formset = contact_data_form_set(request.POST)
-        current_contact_name = 'default_name'
 
-        if 'cancel' in request.POST:
-            return redirect('contacts:contact_list')
-        elif 'save_contact' in request.POST:
-            if contact_form.is_valid():
-                # current_contact_name = contact_form.cleaned_data['name']
+        if contact_form.is_valid():
+            if 'save_contact' in request.POST:
                 contact_form.save()
-
-        if contact_data_form_set.is_valid() and 'submit_data' in request.POST:
-            data_type = contact_data_form_set.cleaned_data['data_type']
-            value = contact_data_form_set.cleaned_data['value']
-            contact = Contact.objects.last()
-            contact_data = ContactData.objects.create(contact=contact,
-                                                  data_type=data_type,
-                                                  value=value)
-            contact_data.save()
-
-        # for form in contact_data_formset:
-        #     contact = Contact.objects.get(name=current_contact_name)
-        #     if form.is_valid() and 'submit_data' in request.POST:
-        #         data_type = form.cleaned_data['data_type']
-        #         value = form.cleaned_data['value']
-        #         form.save()
-
-                # if data_type and value:
-            # contact_data = ContactData.objects.create(contact=Contact(name=current_contact_name),
-            #                                           data_type=data_type,
-            #                                           value=value)
-            # contact_data.save()
+            if 'cancel' in request.POST:
+                return redirect('contacts:contact_list')
 
     else:
 
         contact_form = ContactForm()
-        contact_data_form_set = ContactDataForm()
-        # contact_data_form_set = formset_factory(ContactDataForm, extra=3)
 
     return render(
         request=request,
         template_name='create_contact.html',
-        context={'contact_form': contact_form, 'contact_data_form_set': contact_data_form_set})
+        context={'contact_form': contact_form}
+    )
+
+
+def create_contact_data_view(request):
+
+    if request.method == 'POST':
+        contact_data_form = ContactDataForm(request.POST)
+
+        if contact_data_form.is_valid():
+            if 'submit_data' in request.POST:
+                data_type = contact_data_form.cleaned_data['data_type']
+                value = contact_data_form.cleaned_data['value']
+                contact = Contact.objects.last()
+                contact_data = ContactData.objects.create(
+                    contact=contact,
+                    data_type=data_type,
+                    value=value
+                )
+
+                contact_data.save()
+
+            if 'cancel_data' in request.POST:
+                return redirect('contacts:contact_list')
+
+    else:
+
+        contact_data_form = ContactDataForm()
+
+    return render(
+        request=request,
+        template_name='create_contact.html',
+        context={'contact_data_form': contact_data_form}
+    )

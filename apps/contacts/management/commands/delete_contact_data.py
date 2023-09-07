@@ -15,4 +15,4 @@ class Command(BaseCommand):
         logger.info(f"Current amount of contacts before: {queryset.count()}")
 
         total_deleted, details = ContactData.objects.all().delete()
-        logger.info(f"Total deleted: {total_deleted}, details: {details}")
+        logger.info(f"Total deleted: {total_deleted}")
