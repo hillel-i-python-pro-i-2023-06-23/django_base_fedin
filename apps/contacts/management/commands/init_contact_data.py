@@ -16,7 +16,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options) -> None:
         logger = logging.getLogger("django")
         current_amount_of_contacts = Contact.objects.count()
-        primary_keys = []
 
         amount = (self.MINIMAL_AMOUNT_OF_CONTACTS - current_amount_of_contacts)
 
@@ -48,7 +47,7 @@ class Command(BaseCommand):
                                                                   )
                         contact_data.save()
         else:
-            logger.info(f"Current amount of data is enough.")
+            logger.info("Current amount of data is enough.")
 
         logger.info(f"{amount} contacts created")
 
