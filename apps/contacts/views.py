@@ -24,18 +24,19 @@ def contact_list_view(request):
 
 def create_contact_view(request):
 
-    contact_data_form_set = formset_factory(ContactDataForm, extra=3)
-
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
+        contact_data_form_set = formset_factory(ContactDataForm, extra=3)
 
-        if contact_form.is_valid():
-            if 'cancel' in request.POST:
-                return redirect('contacts:contact_list')  # Redirect to the other template
-            else:
+        if 'cancel' in request.POST:
+            return redirect('contacts:contact_list')
+        else:
+            if contact_form.is_valid():
                 contact_form.save()
-                return redirect('contacts:contact_list')
-    #     contact_data_formset = contact_data_form_set(request.POST)
+            # contact_form = ContactForm()
+            #     return redirect('contacts:contact_list')
+
+        contact_data_formset = contact_data_form_set(request.POST)
     #
     #     # if contact_form.is_valid() and contact_data_formset.is_valid():
     #     contact = contact_form.save()
@@ -52,11 +53,9 @@ def create_contact_view(request):
     else:
 
         contact_form = ContactForm()
-    #     contact_data_formset = contact_data_form_set()
+        contact_data_form_set = formset_factory(ContactDataForm, extra=3)
 
     return render(
         request=request,
         template_name='create_contact.html',
-        context={'contact_form': contact_form})
-    #      'contact_data_formset': contact_data_formset}
-    # )
+        context={'contact_form': contact_form, 'contact_data_formset': contact_data_form_set})
