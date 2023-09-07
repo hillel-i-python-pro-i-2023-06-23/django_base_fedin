@@ -35,13 +35,13 @@ def create_contact_view(request):
             return redirect('contacts:contact_list')
         elif 'save_contact' in request.POST:
             if contact_form.is_valid():
-                current_contact_name = contact_form.cleaned_data['name']
+                # current_contact_name = contact_form.cleaned_data['name']
                 contact_form.save()
 
         if contact_data_form_set.is_valid() and 'submit_data' in request.POST:
             data_type = contact_data_form_set.cleaned_data['data_type']
             value = contact_data_form_set.cleaned_data['value']
-            contact = Contact.objects.first()
+            contact = Contact.objects.last()
             contact_data = ContactData.objects.create(contact=contact,
                                                   data_type=data_type,
                                                   value=value)
