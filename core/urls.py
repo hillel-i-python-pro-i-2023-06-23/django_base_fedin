@@ -8,5 +8,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("apps.basic.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
-    path("contacts/", include("apps.contacts.urls"))
+    path("contacts/", include("apps.contacts.urls")),
 ]

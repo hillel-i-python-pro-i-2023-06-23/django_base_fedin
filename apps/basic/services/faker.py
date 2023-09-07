@@ -7,9 +7,7 @@ class FakeUser:
     def __init__(self):
         self.faker = Faker()
         self.characters = string.ascii_letters + string.digits + "_"
-        self.password_characters = (
-            string.ascii_letters + string.digits + "!@#$^()"
-        )
+        self.password_characters = string.ascii_letters + string.digits + "!@#$^()"
 
     def get_login(self):
         return self.faker.lexify(text="?" * 8, letters=self.characters)

@@ -9,7 +9,6 @@ class Command(BaseCommand):
     help = "Delete contacts"
 
     def handle(self, *args, **options) -> None:
-
         # Log handling to terminal
         logger = logging.getLogger("django")
 

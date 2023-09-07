@@ -8,7 +8,6 @@ class Command(BaseCommand):
     help = "Delete all contact data from the database"
 
     def handle(self, *args, **options):
-
         logger = logging.getLogger("django")
 
         queryset = ContactData.objects.all()

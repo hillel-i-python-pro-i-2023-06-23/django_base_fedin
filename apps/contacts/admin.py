@@ -24,7 +24,11 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(ContactData)
 class ContactDataAdmin(admin.ModelAdmin):
-    list_display = ["contact", "data_type", "value", ]
+    list_display = [
+        "contact",
+        "data_type",
+        "value",
+    ]
 
     list_filter = [
         "contact",
@@ -33,9 +37,10 @@ class ContactDataAdmin(admin.ModelAdmin):
 
 @admin.register(ContactDataType)
 class ContactDataTypeAdmin(admin.ModelAdmin):
-    list_display = ["name", ]
+    list_display = [
+        "name",
+    ]
 
     list_filter = [
         "name",
     ]
-

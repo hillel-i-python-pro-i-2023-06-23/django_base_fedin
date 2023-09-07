@@ -1,9 +1,7 @@
-import string
-
 from faker import Faker
 
 
-class FakeContact():
+class FakeContact:
     def __init__(self):
         self.faker = Faker()
 
@@ -12,8 +10,8 @@ class FakeContact():
 
     def get_phone(self):
         phone_number = self.faker.phone_number()
-        digits = ''.join(filter(str.isdigit, phone_number))
-        custom_phone_number = '+' + digits
+        digits = "".join(filter(str.isdigit, phone_number))
+        custom_phone_number = "+" + digits
 
         return custom_phone_number
 

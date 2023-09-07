@@ -1,5 +1,3 @@
-import logging
-
 from django.core.management.base import BaseCommand
 from apps.contacts.models import Contact, ContactData, ContactDataType
 from apps.contacts.services import fake_contact
@@ -21,8 +19,6 @@ class Command(BaseCommand):
         contact_type_names = ["Phone Number", "LinkedIn Account", "Email"]
 
         contact_types = [ContactDataType.objects.get_or_create(name=name)[0] for name in contact_type_names]
-
-        logger = logging.getLogger("django")
 
         contact_item = Contact.objects.get(id=id_input)
         contact_name = contact_item.name

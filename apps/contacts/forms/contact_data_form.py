@@ -8,4 +8,4 @@ class ContactDataForm(forms.Form):
 
     class Meta:
         model = ContactDataType
-        fields = ['data_type', 'value']
+        fields = ["data_type", "value"]

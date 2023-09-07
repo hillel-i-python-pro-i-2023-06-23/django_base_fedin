@@ -17,10 +17,9 @@ class Command(BaseCommand):
         logger = logging.getLogger("django")
         current_amount_of_users = CustomUser.objects.count()
 
-        amount = (self.MINIMAL_AMOUNT_OF_CONTACTS - current_amount_of_users)
+        amount = self.MINIMAL_AMOUNT_OF_CONTACTS - current_amount_of_users
 
         if amount > 0:
-
             logger.info(f"Current amount of users: {CustomUser.objects.count()} but {amount} needed")
 
             try:
@@ -28,23 +27,22 @@ class Command(BaseCommand):
                     user = generate_user()
                     user.save()
 
-                new_user_count = CustomUser.objects.count()
-                logger.info(f"{new_user_count} users created")
+                logger.info("{new_user_count} users created")
 
             except FieldError:
-                logger.error(f"Queried object doesn't exist in database.")
+                logger.error("Queried object doesn't exist in database.")
 
         else:
-            logger.info(f"Current amount of users is enough.")
+            logger.info("Current amount of users is enough.")
 
         is_superuser = CustomUser.objects.filter(username="admin").exists()
         if is_superuser:
-            logger.info(f"Superuser already exists. No superuser created.")
+            logger.info("Superuser already exists. No superuser created.")
             pass
         else:
             new_super_user = create_superuser.Command()
             new_super_user.handle(username="admin", password="admin123", email="admin@gmail.com")
 
-            logger.info(f"Superuser created")
+            logger.info("Superuser created")
 
         logger.info(f"Final amount of users: {CustomUser.objects.count()}")
