@@ -35,7 +35,9 @@ def create_contact_view(request):
     else:
         contact_form = ContactForm()
 
-    return render(request=request, template_name="create_contact.html", context={"contact_form": contact_form})
+    return render(request=request,
+                  template_name="create_contact.html",
+                  context={"contact_form": contact_form})
 
 
 def create_contact_data_view(request):
@@ -57,4 +59,6 @@ def create_contact_data_view(request):
     else:
         contact_data_form = ContactDataForm()
 
-    return render(request=request, template_name="create_contact.html", context={"contact_data_form": contact_data_form})
+    return render(request=request,
+                  template_name="create_contact.html",
+                  context={"contact_data_form": contact_data_form})

@@ -14,7 +14,11 @@
     <h3>Data Types</h3>
     <form method="post">
         {% csrf_token %}
-        {{ contact_data_form.as_p }}
+        {%if contact_data_form %}
+            {{ contact_data_form.as_p }}
+        {% else %}
+            Form not passed
+        {% endif%}
         <button type="submit" name="submit_data" value="submit_data">Create</button>
         <button type="submit" name="cancel_data" value="cancel_data">Close</button>
     </form>
