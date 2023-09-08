@@ -14,8 +14,8 @@ RUN useradd --system ${USER} && \
 
 RUN apt update && apt upgrade -y
 
-COPY --chown=${USER} ./config/requirements/dev.txt /dev.txt
-COPY --chown=${USER} ./config/requirements/base.txt /base.txt
+COPY --chown=${USER} ./config/requirements/dev.txt ./config/requirements/dev.txt
+COPY --chown=${USER} ./config/requirements/base.txt ./config/requirements/base.txt
 
 RUN pip install --upgrade pip && \
     pip install -r config/requirements/dev.txt

@@ -1,8 +1,5 @@
 -r base.txt
 
-# For services
-faker==19.2.0
-
 # [code_style]-[BEGIN]
 # Pre-commit hook.
 pre-commit==3.3.3
