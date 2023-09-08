@@ -37,7 +37,7 @@ def create_contact_view(request):
             if "submit_data" in request.POST:
                 data_type = contact_data_form.cleaned_data["data_type"]
                 value = contact_data_form.cleaned_data["value"]
-                contact = Contact.objects.last()
+                contact = Contact.objects.latest('id')
                 contact_data = ContactData.objects.create(contact=contact,
                                                           data_type=data_type,
                                                           value=value)
