@@ -7,7 +7,6 @@ from apps.contacts.services.faker import fake_contact
 
 
 def generate_contact() -> Contact:
-
     return Contact(
         name=fake_contact.get_name(),
         # phone_number=fake_contact.get_phone(),
@@ -15,6 +14,8 @@ def generate_contact() -> Contact:
     )
 
 
-def generate_contacts(amount: int, ) -> Iterator[Contact]:
+def generate_contacts(
+    amount: int,
+) -> Iterator[Contact]:
     for _ in range(amount):
         yield generate_contact()

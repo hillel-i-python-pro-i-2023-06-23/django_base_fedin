@@ -40,7 +40,7 @@ d-purge:
 # Init environment for development
 init-dev:
 	@pip install --upgrade pip && \
-	pip install --requirement requirements.txt && \
+	pip install -r config/requirements/dev.txt && \
 	pre-commit install
 
 .PHONY: homework-i-run
@@ -77,6 +77,9 @@ migrate:
 .PHONY: init_user_data
 # Create users and superuser
 init_user_data:
-	@python manage.py generate_users && \
-	python manage.py create_superuser && \
-	echo "User data created"
+	@python manage.py init_user_data
+
+.PHONY: init_contact_data
+# Create users and superuser
+init_contact_data:
+	@python manage.py init_contact_data

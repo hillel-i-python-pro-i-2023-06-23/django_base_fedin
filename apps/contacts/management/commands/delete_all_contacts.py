@@ -2,14 +2,13 @@ import logging
 
 from django.core.management.base import BaseCommand
 
-from apps.contacts.models.contact import Contact
+from apps.contacts.models import Contact
 
 
 class Command(BaseCommand):
     help = "Delete contacts"
 
     def handle(self, *args, **options) -> None:
-
         # Log handling to terminal
         logger = logging.getLogger("django")
 

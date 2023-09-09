@@ -1,8 +1,4 @@
-# For web.
-django==4.2.3
-
-# For services
-faker==19.2.0
+-r base.txt
 
 # [code_style]-[BEGIN]
 # Pre-commit hook.

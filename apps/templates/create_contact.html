@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+
+{% block title %}List{% endblock %}
+
+{% block content %}
+    <h2>Create Contact</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ contact_form.as_p}}
+        <button type="submit" name="save_contact" value="save_contact">Create</button>
+        <button type="submit" name="cancel" value="cancel">Close</button>
+    </form>
+
+    <h3>Data Types</h3>
+    <form method="post">
+        {% csrf_token %}
+        {%if contact_data_form %}
+            {{ contact_data_form.as_p }}
+        {% else %}
+            Form not passed
+        {% endif%}
+        <button type="submit" name="submit_data" value="submit_data">Create</button>
+        <button type="submit" name="cancel_data" value="cancel_data">Close</button>
+    </form>
+{% endblock %}

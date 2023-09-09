@@ -25,5 +25,5 @@ def about_view(request):
             "now": datetime.now(),
             "user_amount": CustomUser.objects.all().count(),
             "contact_amount": Contact.objects.all().count(),
-        }
+        },
     )

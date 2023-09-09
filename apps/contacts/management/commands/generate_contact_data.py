@@ -1,35 +1,35 @@
-import logging
-
 from django.core.management.base import BaseCommand
-from apps.contacts.models.contact import Contact
-from apps.contacts.models.contact_data import ContactData
-from apps.contacts.models.contact_data_type import ContactDataType
-from apps.contacts.services.faker import fake_contact
+from apps.contacts.models import Contact, ContactData, ContactDataType
+from apps.contacts.services import fake_contact
 
 
 class Command(BaseCommand):
     help = "Create each type of contact data for each contact"
 
+    def add_arguments(self, parser) -> None:
+        parser.add_argument(
+            "--id",
+            type=int,
+            default=10,
+            help="Number of contacts to generate",
+        )
+
     def handle(self, *args, **options):
+        id_input: int = options["id"]
         contact_type_names = ["Phone Number", "LinkedIn Account", "Email"]
 
         contact_types = [ContactDataType.objects.get_or_create(name=name)[0] for name in contact_type_names]
 
-        logger = logging.getLogger("django")
+        contact_item = Contact.objects.get(id=id_input)
+        contact_name = contact_item.name
+        value = None
 
-        for contact in Contact.objects.all():
-            contact_name = contact.name
-            value = None
-
-            for contact_type in contact_types:
-                if contact_type.name == "Phone Number":
-                    value = fake_contact.get_phone()
-                elif contact_type.name == "Email":
-                    value = fake_contact.get_email(contact_name)
-                elif contact_type.name == "LinkedIn Account":
-                    raw_value = contact_name
-                    value = raw_value[0].lower() + raw_value[1:]
-                ContactData.objects.create(contact=contact, data_type=contact_type, value=value)
-
-        queryset = Contact.objects.all()
-        logger.info(f"Amount of contact types created: {queryset.count()}")
+        for contact_type in contact_types:
+            if contact_type.name == "Phone Number":
+                value = fake_contact.get_phone()
+            elif contact_type.name == "Email":
+                value = fake_contact.get_email(contact_name)
+            elif contact_type.name == "LinkedIn Account":
+                raw_value = contact_name
+                value = raw_value[0].lower() + raw_value[1:]
+            ContactData.objects.create(contact=contact_item, data_type=contact_type, value=value)

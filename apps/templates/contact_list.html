@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+
+{% block title %}List{% endblock %}
+
+{% block content %}
+    <h3>Contact List</h3>
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <ul>
+                {% for contact in contacts %}
+                    <br>
+                    <li>{{ contact.name }}</li>
+                    <br>
+                    <ul>
+                        {% for contact_data in contact.contactdata_set.all %}
+                            <li>{{ contact_data.data_type.name }}: {{ contact_data.value }}</li>
+                        {% endfor %}
+                    </ul>
+                    <br>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>{{ info_message }}</p>
+        {% endif %}
+    {% else %}
+        <p>{{ login_prompt }}</p>
+    {% endif %}
+{% endblock %}
