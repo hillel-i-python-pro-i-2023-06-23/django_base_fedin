@@ -18,7 +18,7 @@ COPY --chown=${USER} ./config/requirements/dev.txt ./config/requirements/dev.txt
 COPY --chown=${USER} ./config/requirements/base.txt ./config/requirements/base.txt
 
 RUN pip install --upgrade pip && \
-    pip install -r config/requirements/dev.txt
+    pip install --requirement config/requirements/dev.txt
 
 # Set ownership and copy files/directories from the host machine to the container's filesystem during the build process.
 COPY --chown=${USER} --chmod=555 ./docker/app/entrypoint.sh /entrypoint.sh

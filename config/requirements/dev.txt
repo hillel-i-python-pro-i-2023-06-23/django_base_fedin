@@ -1,4 +1,4 @@
--r base.txt
+--requirement base.txt
 
 # [code_style]-[BEGIN]
 # Pre-commit hook.
