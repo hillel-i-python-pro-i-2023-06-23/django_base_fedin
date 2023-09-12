@@ -9,27 +9,49 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import string
 from pathlib import Path
+
+# Environment variables settings
+import environ
+
+# Get random string to encrypt
+from django.utils.crypto import get_random_string
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 APPS_DIR = BASE_DIR.joinpath("apps")
 
+# Get env file
+env = environ.FileAwareEnv()
+env.read_env(BASE_DIR.joinpath(".env"))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-&@*kgout_%h4har(do4m6lfa1bd=wxq24$in)%7s)x0i)h-gej"
+# SECRET_KEY = "django-insecure-&@*kgout_%h4har(do4m6lfa1bd=wxq24$in)%7s)x0i)h-gej"
+
+SECRET_KEY = env.str("DJANGO__SECRET_KEY", get_random_string(length=64, allowed_chars="".join([string.ascii_letters, string.digits, string.punctuation])))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "0.0.0.0",
-]
+# DEBUG = True
+DEBUG = env.bool(var="DJANGO__DEBUG", default=False)
+# ALLOWED_HOSTS = [
+#     "localhost",
+#     "127.0.0.1",
+#     "0.0.0.0",
+# ]
+ALLOWED_HOSTS = env.list(var="DJANGO__ALLOWED_HOSTS", default=[])
+if DEBUG:
+    ALLOWED_HOSTS.extend(
+        [
+            "localhost",
+            "127.0.0.1",
+            "0.0.0.0",
+        ]
+    )
 
 # Application definition
 
