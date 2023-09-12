@@ -9,6 +9,5 @@ db.sqlite3-journal
 media
 venv/
 .idea/
-.env.hw
 
 docker-compose.override.yml
