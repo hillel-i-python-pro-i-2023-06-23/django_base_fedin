@@ -62,6 +62,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.postgres",
 ]
 
 # Register local apps
@@ -107,10 +108,11 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db" / "my_sqlite",
-    }
+    "default": env.db_url_config(
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": BASE_DIR / "db" / "my_sqlite",
+        env.str(var="DJANGO_DB_URL", default=f'postgres://{env.str("POSTGRES_USER")}:{env.str("POSTGRES_PASSWORD")}' f'@{env.str("POSTGRES_HOST")}:{env.str("POSTGRES_PORT")}/{env.str("POSTGRES_DB")}')
+    )
 }
 
 # Password validation

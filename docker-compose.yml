@@ -1,10 +1,25 @@
 version: '3.9'
 
+volumes:
+  postgres_data: { }  # volume for postgres to not use local
 
 services:
   app:
     build: .
-#    environment: # explicit setting variables
+    environment: # explicit setting variables
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
 #      - DJANGO__DEBUG=True
     env_file: # implicit setting variables
       - .env
+    depends_on:
+      - postgres  # current service depends on postgres service
+
+  postgres: # service to serve app service
+    image: postgres:15.4
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+    - postgres_data:/var/lib/postgres/data:rw # folder to store postgres data
