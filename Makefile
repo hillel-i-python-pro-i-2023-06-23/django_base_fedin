@@ -14,6 +14,7 @@ d-homework-i-purge:
 .PHONY: init-configs
 # Configuration files initialization
 init-configs:
+	@cp	.env.hw .env && \
 	@cp docker-compose.override.dev.yml docker-compose.override.yml
 
 

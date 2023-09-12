@@ -3,3 +3,6 @@ django==4.2.3
 
 # For services
 faker==19.2.0
+
+# For environment configuration
+django-environ==0.10.0
