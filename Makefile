@@ -25,7 +25,7 @@ d-run:
 		docker compose up --build
 
 .PHONY: d-run-i-local-dev
-# Just run
+# Just run in local Django
 d-run-i-local-dev:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
 		docker_compose \
