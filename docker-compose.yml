@@ -14,6 +14,8 @@ services:
       - .env
     depends_on:
       - postgres  # current service depends on postgres service
+    profiles:
+      - full_dev
 
   postgres: # service to serve app service
     image: postgres:15.4
@@ -23,3 +25,6 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
     - postgres_data:/var/lib/postgres/data:rw # folder to store postgres data
+    profiles:
+      - full_dev
+      - local_dev
