@@ -5,7 +5,7 @@
 
 ## 🏠 Homework 19
 
-Set environment variables.
+Django. Postgres, Docker Compose profiles .
 
 
 

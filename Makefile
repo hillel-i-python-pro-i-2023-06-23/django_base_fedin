@@ -22,7 +22,17 @@ init-configs:
 # Just run
 d-run:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
-		docker compose up --build
+		COMPOSE_PROFILES=full_dev \
+		docker compose \
+		up --build
+
+.PHONY: d-run-i-local-dev
+# Just run in local Django
+d-run-i-local-dev:
+	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
+		COMPOSE_PROFILES=local_dev \
+		docker compose \
+			up --build postgres
 
 .PHONY: d-stop
 # Stop services
