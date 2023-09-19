@@ -7,16 +7,25 @@
 
 {#    {% endif %}#}
     {% if user.is_authenticated %}
-        <h3>Contact data info:</h3>
+        <h3>Contact data summary:</h3>
         {% if data_type_amount %}
-            Amount of contact data types: {{ data_type_amount }}
+            <br>
+            Amount of contact data types : {{ data_type_amount }}
+            <br>
+            <br>
+            Data type usage:
+                <ul>
+                    {% for use in usage %}
+                        <li>{{ use }}</li>
+                    {% endfor %}
+                </ul>
+            Count of contact data usage per user:
+            <br>
             <ul>
-{#            {{ usage }}#}
-                {% for use in usage %}
-                    <li>{{ use }}</li>
+                {% for item in data_type_count %}
+                        <li>{{ item }}</li>
                 {% endfor %}
             </ul>
-
         {% else %}
             info data not sent!
         {% endif %}

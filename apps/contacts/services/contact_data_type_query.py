@@ -1,4 +1,6 @@
-from apps.contacts.models import ContactDataType, ContactData
+from django.db.models import Count
+
+from apps.contacts.models import Contact, ContactDataType, ContactData
 
 contact_data_type_amount = ContactDataType.objects.count()
 
@@ -21,3 +23,16 @@ def contact_data_usage() -> list[str]:
         usage_list.append(usage_item)
 
     return usage_list
+
+
+def user_datatype_count():
+    queryset = Contact.objects.annotate(data_count=Count("contactdata"))
+    data_counts = []
+
+    for item in queryset:
+        data_count = item.data_count
+        data_counts.append(f"{item.name} - {data_count}")
+        # data_counts.append(data_count)
+
+    # return queryset[9].data_count
+    return data_counts
