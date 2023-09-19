@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect
 from apps.contacts.models import Contact, ContactData
 from apps.contacts.forms import ContactForm, ContactDataForm
+from apps.contacts.services import (
+    contact_data_type_amount,
+    contact_data_usage,
+)
 
 
 def contact_list_view(request):
     contacts = Contact.objects.all()
     contact_data = ContactData.objects.all()
 
+    data_type_amount = contact_data_type_amount
+    usage = contact_data_usage()
     info_message = "We got something, but you have no enough permissions to see("
     login_prompt = "Please, log in first"
 
@@ -18,8 +24,22 @@ def contact_list_view(request):
             "contact_data": contact_data,
             "info_message": info_message,
             "login_prompt": login_prompt,
+            "data_type_amount": data_type_amount,
+            "usage": usage,
         },
     )
+
+
+# def contact_data_types_view(request):
+#     data_type_amount = data_type_query()
+#
+#     return render(
+#         request=request,
+#         template_name="contact_list.html",
+#         context={
+#             "data_type_amount": data_type_amount,
+#         },
+#     )
 
 
 def create_contact_view(request):
