@@ -2,7 +2,9 @@ from django.db.models import Count
 
 from apps.contacts.models import Contact, ContactDataType, ContactData
 
-contact_data_type_amount = ContactDataType.objects.count()
+
+def contact_data_type_amount():
+    return ContactDataType.objects.count()
 
 
 def contact_data_type_count(data_id: int) -> int:

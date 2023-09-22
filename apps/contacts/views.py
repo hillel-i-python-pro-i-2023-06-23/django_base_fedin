@@ -30,18 +30,6 @@ def contact_list_view(request):
     )
 
 
-# def contact_data_types_view(request):
-#     data_type_amount = data_type_query()
-#
-#     return render(
-#         request=request,
-#         template_name="contact_list.html",
-#         context={
-#             "data_type_amount": data_type_amount,
-#         },
-#     )
-
-
 def create_contact_view(request):
     if request.method == "POST":
         contact_form = ContactForm(request.POST)
